@@ -6,23 +6,24 @@ Requirements
 
 ### Platform:
 
-*List supported platforms here*
+Ubuntu 12.04LTS
 
 ### Cookbooks:
 
-*List cookbook dependencies here*
+ChefSugar
+apt
 
 Attributes
 ----------
 
-*List attributes here*
+Nothing that's adjustable.
 
 Recipes
 -------
 
 ### openresty::default
 
-*Explain what the recipe does here*
+Installs Openresty from a bintray deb built with [this recipe](https://github.com/darron/fpm-recipes/tree/master/openresty).
 
 ### Packer Build
 
@@ -32,11 +33,11 @@ In order to build an Amazon AMI, DigitalOcean Droplet, Google Compute or Rackspa
     export SDK_USERNAME="username"  # Same as here: https://mycloud.rackspace.com/
     export SDK_PASSWORD="password-to-login" # Not the API key.
     export SDK_PROVIDER="rackspace-us" # Or rackspace-uk
-    
+
     # EC2 - can be found here: https://portal.aws.amazon.com/gp/aws/securityCredentials?
     export AWS_ACCESS_KEY="long-random-string"
     export AWS_SECRET_KEY="another-even-longer-long-random-string"
-    
+
     # Digital Ocean - get these here: https://cloud.digitalocean.com/api_access
     export DIGITALOCEAN_CLIENT_ID="long-random-string"
     export DIGITALOCEAN_API_KEY="another-long-random-string"
