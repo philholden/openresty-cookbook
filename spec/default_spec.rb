@@ -16,4 +16,12 @@ describe 'openresty::default' do
   it 'installs openresty' do
     expect(chef_run).to install_package('openresty')
   end
+
+  it 'enables nginx' do
+    expect(chef_run).to enable_service('nginx')
+  end
+
+  it 'starts nginx' do
+    expect(chef_run).to start_service('nginx')
+  end
 end

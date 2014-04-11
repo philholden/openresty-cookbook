@@ -24,8 +24,8 @@ execute 'apt-get update' do
   command 'apt-get update'
 end
 
-package "libgd2-noxpm"
-package "libssl0.9.8"
+package 'libgd2-noxpm'
+package 'libssl0.9.8'
 
 apt_repository 'openresty' do
   uri node['openresty']['package']['repo_url']
@@ -33,6 +33,11 @@ apt_repository 'openresty' do
 end
 
 package 'openresty' do
- action :install
- options '--allow-unauthenticated'
+  action :install
+  options '--allow-unauthenticated'
+end
+
+service 'nginx' do
+  supports :status => true # rubocop:disable HashSyntax
+  action [:enable, :start]
 end
