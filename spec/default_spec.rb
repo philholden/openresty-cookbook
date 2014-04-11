@@ -5,7 +5,15 @@ require 'spec_helper'
 describe 'openresty::default' do
   let(:chef_run) { ChefSpec::Runner.new.converge(described_recipe) }
 
-  it 'does something' do
-    pending 'Replace this with meaningful tests'
+  it 'installs libgd2-noxpm' do
+    expect(chef_run).to install_package('libgd2-noxpm')
+  end
+
+  it 'installs libssl0.9.8' do
+    expect(chef_run).to install_package('libssl0.9.8')
+  end
+
+  it 'installs openresty' do
+    expect(chef_run).to install_package('openresty')
   end
 end

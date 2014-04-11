@@ -19,3 +19,20 @@
 #
 
 include_recipe 'chef-sugar::default'
+
+execute 'apt-get update' do
+  command 'apt-get update'
+end
+
+package "libgd2-noxpm"
+package "libssl0.9.8"
+
+apt_repository 'openresty' do
+  uri node['openresty']['package']['repo_url']
+  distribution node['openresty']['package']['distribution']
+end
+
+package 'openresty' do
+ action :install
+ options '--allow-unauthenticated'
+end

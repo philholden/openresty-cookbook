@@ -8,3 +8,4 @@ version          '0.1.0'
 recipe           'openresty::default', 'Installs/configures openresty'
 
 depends 'chef-sugar'
+depends 'apt'

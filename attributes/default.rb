@@ -18,4 +18,5 @@
 # limitations under the License.
 #
 
-# Set meaningful node attributes here
+default['openresty']['package']['distribution'] = '/'
+default['openresty']['package']['repo_url'] = 'http://dl.bintray.com/octohost/openresty'
