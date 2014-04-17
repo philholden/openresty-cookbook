@@ -27,6 +27,9 @@ end
 package 'libgd2-noxpm'
 package 'libssl0.9.8'
 
+# For the embedded Perl support we are using to generate UUIDs for each request.
+package 'libossp-uuid-perl'
+
 apt_repository 'openresty' do
   uri node['openresty']['package']['repo_url']
   distribution node['openresty']['package']['distribution']

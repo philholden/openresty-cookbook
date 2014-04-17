@@ -13,6 +13,10 @@ describe 'openresty::default' do
     expect(chef_run).to install_package('libssl0.9.8')
   end
 
+  it 'installs libossp-uuid-perl' do
+    expect(chef_run).to install_package('libossp-uuid-perl')
+  end
+
   it 'installs openresty' do
     expect(chef_run).to install_package('openresty')
   end
