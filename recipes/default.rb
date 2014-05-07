@@ -24,20 +24,27 @@ execute 'apt-get update' do
   command 'apt-get update'
 end
 
-package 'libgd2-noxpm'
+case node['platform_version']
+when '12.04'
+  package 'libgd2-noxpm'
+when '14.04'
+  package 'libgd2-noxpm-dev'
+end
+
 package 'libssl0.9.8'
 
-# For the embedded Perl support we are using to generate UUIDs for each request.
-package 'libossp-uuid-perl'
+package 'curl'
 
-apt_repository 'openresty' do
-  uri node['openresty']['package']['repo_url']
-  distribution node['openresty']['package']['distribution']
+bash 'install repo' do
+  user 'root'
+  cwd '/tmp'
+  code <<-EOH
+    curl https://packagecloud.io/install/repositories/darron/openresty/script.deb | sudo bash
+  EOH
 end
 
 package 'openresty' do
   action :install
-  options '--allow-unauthenticated'
 end
 
 service 'nginx' do
