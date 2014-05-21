@@ -47,6 +47,17 @@ package 'openresty' do
   action :install
 end
 
+nginx_config = "/etc/nginx/nginx.conf"
+types_hash_max_size = /^\s+types_hash_max_size.*$/m
+
+ruby_block "add pam_limits to su" do
+  block do
+    sed = Chef::Util::FileEdit.new(nginx_config)
+    sed.search_file_replace(types_hash_max_size, '    types_hash_max_size 2048;\n    types_hash_bucket_size 64;\n')
+    sed.write_file
+  end
+end
+
 service 'nginx' do
   supports :status => true # rubocop:disable HashSyntax
   action [:enable, :start]
