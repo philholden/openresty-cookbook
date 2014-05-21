@@ -56,7 +56,6 @@ ruby_block "update nginx conf" do
     sed.search_file_replace(types_hash_max_size, '    types_hash_max_size 2048;\n    types_hash_bucket_size 64;\n')
     sed.write_file
   end
-  only_if { ::File.readlines(nginx_config).grep(types_hash_max_size).any? }
 end
 
 service 'nginx' do
